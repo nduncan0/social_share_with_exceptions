@@ -123,12 +123,11 @@
         NSURL *urlSchemeSend = [NSURL URLWithString:urlTextEscaped];
         if (@available(iOS 10.0, *)) {
             [[UIApplication sharedApplication] openURL:urlSchemeSend options:@{} completionHandler:^(BOOL success) {
-    if (success) {
-         result(@"success");
-    } else {
-        result(@"error");
-    }];
-            result(@"success");
+                if (success) {
+                    result(@"success");
+                } else {
+                    result(@"error");
+                }}];
         } else {
             result(@"error");
         }
