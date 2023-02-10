@@ -122,8 +122,11 @@ class SocialShare {
     Map<String, dynamic> args = <String, dynamic>{
       "captionText": _captionText + " ",
     };
-    final version = await _channel.invokeMethod('shareTwitter', args);
-    return version;
+    try {
+      return await _channel.invokeMethod('shareTwitter', args);
+    } catch (error) {
+      return error;
+    }
   }
 
   static Future<String?> shareSms(String message,
