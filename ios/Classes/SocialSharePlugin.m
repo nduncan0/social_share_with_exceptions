@@ -122,7 +122,12 @@
         NSString* urlTextEscaped = [urlSchemeTwitter stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *urlSchemeSend = [NSURL URLWithString:urlTextEscaped];
         if (@available(iOS 10.0, *)) {
-            [[UIApplication sharedApplication] openURL:urlSchemeSend options:@{} completionHandler:(void (^ __nullable)(BOOL success))completion];
+            [[UIApplication sharedApplication] openURL:urlSchemeSend options:@{} completionHandler:^(BOOL success) {
+    if (success) {
+         result(@"success");
+    } else {
+        result(@"error");
+    }];
             result(@"success");
         } else {
             result(@"error");
