@@ -89,7 +89,7 @@ class SocialShare {
     return response;
   }
 
-  static Future<dynamic> shareTwitter(
+  static Future<String?> shareTwitter(
     String captionText, {
     List<String>? hashtags,
     String? url,
@@ -122,11 +122,8 @@ class SocialShare {
     Map<String, dynamic> args = <String, dynamic>{
       "captionText": _captionText + " ",
     };
-    try {
-      return await _channel.invokeMethod('shareTwitter', args);
-    } catch (error) {
-      return error;
-    }
+
+    return await _channel.invokeMethod('shareTwitter', args);
   }
 
   static Future<String?> shareSms(String message,

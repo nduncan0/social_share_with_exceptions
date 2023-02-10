@@ -127,7 +127,8 @@
                     result(@"success");
                 } else {
                     result(@"error");
-                }}];
+                }
+            }];
         } else {
             result(@"error");
         }
